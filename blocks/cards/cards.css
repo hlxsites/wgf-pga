@@ -40,6 +40,10 @@ main .section.cards-horizontal-container h3 {
         flex-direction: unset;
     }
 
+    .cards > div > div {
+        flex: 0 0 1fr;
+    }
+
     .cards > div > div.cards-contains-image {
         flex: 0 0 150px;
         margin-right: 32px;
