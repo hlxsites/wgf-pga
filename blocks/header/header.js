@@ -62,6 +62,16 @@ export default async function decorate(block) {
     nav.prepend(hamburger);
     nav.setAttribute('aria-expanded', 'false');
     decorateIcons(nav);
+
+    /* wrap brand log in link */
+    const brand = nav.querySelector('.nav-brand');
+    const picture = brand.querySelector('picture');
+    const link = document.createElement('a');
+    link.href = '/';
+    picture.parentElement.append(link);
+    link.append(picture);
+
     block.append(nav);
+
   }
 }

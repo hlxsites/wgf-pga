@@ -22,9 +22,15 @@ main .section.cards-horizontal-container {
     font-size: var(--heading-font-size-s);
 }
 
-main .section.cards-horizontal-container h3 {
+main .cards.horizontal h2 a:any-link {
+    color: #00386b;
+    font-size: var(--heading-font-size-l);
+}
+
+main .cards.horizontal h3 {
     font-size: var(--heading-font-size-s);
-    margin-bottom: 64px;
+    margin-bottom: 25px;
+    color: #888;
 }
 
 

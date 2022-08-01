@@ -15,6 +15,12 @@ footer .footer .footer-logos > div {
   justify-content: center;
 }
 
+footer .footer .footer-logos a {
+  margin: 8px;
+  white-space: nowrap;
+}
+
+
 footer .footer .footer-logos img {
   height: 45px;
 }
