@@ -1,10 +1,47 @@
 import { readBlockConfig, decorateIcons, makeLinksRelative } from '../../scripts/scripts.js';
 
 /**
+ * Wraps images followed by links within a matching <a> tag.
+ * @param {Element} container The container element
+ */
+function wrapImgsInLinks(container) {
+  const pictures = container.querySelectorAll('p picture');
+  pictures.forEach((pic) => {
+    const parent = pic.parentNode;
+    const link = parent.nextElementSibling.querySelector('a');
+    if (link && link.textContent.includes(link.getAttribute('href'))) {
+      link.parentElement.remove();
+      link.innerHTML = pic.outerHTML;
+      parent.replaceWith(link);
+    }
+  });
+}
+
+function linkPicture(picture) {
+  const next = picture.parentNode.nextElementSibling;
+  if (next) {
+    const a = next.querySelector('a');
+    if (a && a.textContent.startsWith('https://')) {
+      a.innerHTML = '';
+      a.className = '';
+      a.appendChild(picture);
+    }
+  }
+}
+
+function decorateLinkedPictures(main) {
+  /* thanks to word online */
+  main.querySelectorAll('picture').forEach((picture) => {
+    if (!picture.closest('div.block')) {
+      linkPicture(picture);
+    }
+  });
+}
+
+/**
  * collapses all open nav sections
  * @param {Element} sections The container element
  */
-
 function collapseAllNavSections(sections) {
   sections.querySelectorAll('.nav-sections > ul > li').forEach((section) => {
     section.setAttribute('aria-expanded', 'false');
@@ -12,10 +49,9 @@ function collapseAllNavSections(sections) {
 }
 
 /**
- * decorates the header, mainly the nav
+ * loads and decorates the header, mainly the nav
  * @param {Element} block The header block element
  */
-
 export default async function decorate(block) {
   const cfg = readBlockConfig(block);
   block.textContent = '';
@@ -29,24 +65,29 @@ export default async function decorate(block) {
     // decorate nav DOM
     const nav = document.createElement('nav');
     nav.innerHTML = html;
-    decorateIcons(nav);
     makeLinksRelative(nav);
 
     const classes = ['brand', 'sections', 'tools'];
-    classes.forEach((e, j) => {
-      const section = nav.children[j];
-      if (section) section.classList.add(`nav-${e}`);
+    classes.forEach((c, i) => {
+      const section = nav.children[i];
+      if (section) section.classList.add(`nav-${c}`);
     });
 
     const navSections = [...nav.children][1];
     if (navSections) {
       navSections.querySelectorAll(':scope > ul > li').forEach((navSection) => {
-        if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
-        navSection.addEventListener('click', () => {
-          const expanded = navSection.getAttribute('aria-expanded') === 'true';
-          collapseAllNavSections(navSections);
-          navSection.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-        });
+        if (navSection.querySelector('ul')) {
+          navSection.classList.add('nav-drop');
+          const ul = navSection.querySelector('ul');
+          const title = navSection.innerHTML.split('<')[0].trim();
+          navSection.innerHTML = `<span>${title}</span>${ul.outerHTML}`;
+          navSection.setAttribute('aria-expanded', false);
+          navSection.addEventListener('click', () => {
+            const expanded = navSection.getAttribute('aria-expanded') === 'true';
+            collapseAllNavSections(navSections);
+            navSection.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+          });
+        }
       });
     }
 
@@ -61,17 +102,11 @@ export default async function decorate(block) {
     });
     nav.prepend(hamburger);
     nav.setAttribute('aria-expanded', 'false');
+
+    wrapImgsInLinks(nav);
+
     decorateIcons(nav);
-
-    /* wrap brand log in link */
-    const brand = nav.querySelector('.nav-brand');
-    const picture = brand.querySelector('picture');
-    const link = document.createElement('a');
-    link.href = '/';
-    picture.parentElement.append(link);
-    link.append(picture);
-
+    decorateLinkedPictures(nav);
     block.append(nav);
-
   }
 }
