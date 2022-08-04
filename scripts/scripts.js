@@ -488,22 +488,6 @@ export function makeLinksRelative(main) {
 }
 
 /**
- * Decorates the picture elements and removes formatting.
- * @param {Element} main The container element
- */
-export function decoratePictures(main) {
-  main.querySelectorAll('img[src*="/media_"').forEach((img, i) => {
-    const newPicture = createOptimizedPicture(img.src, img.alt, !i);
-    const picture = img.closest('picture');
-    if (picture) picture.parentElement.replaceChild(newPicture, picture);
-    if (['EM', 'STRONG'].includes(newPicture.parentElement.tagName)) {
-      const styleEl = newPicture.parentElement;
-      styleEl.parentElement.replaceChild(newPicture, styleEl);
-    }
-  });
-}
-
-/**
  * Set template (page structure) and theme (page styles).
  */
 function decorateTemplateAndTheme() {
@@ -694,10 +678,6 @@ function buildAutoBlocks(main) {
  * @param {Element} main The main element
  */
 export function decorateMain(main) {
-  // forward compatible pictures redecoration
-  decoratePictures(main);
-  // forward compatible link rewriting
-  makeLinksRelative(main);
   decorateLinkedPictures(main);
 
   // hopefully forward compatible button decoration
