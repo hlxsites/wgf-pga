@@ -712,6 +712,8 @@ export function decorateMain(main) {
  * loads everything needed to get to LCP.
  */
 async function loadEager(doc) {
+  const { hostname } = window.location;
+  if (hostname === 'worldgolffoundation.org') window.location = `https://www.worldgolffoundation.org${window.location.pathname}`;
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
   if (main) {
