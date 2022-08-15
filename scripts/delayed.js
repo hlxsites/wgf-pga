@@ -32,8 +32,21 @@ window.pgatour.tracking = {
   },
 };
 
+const pname = window.location.pathname.split('/').pop();
+
 window.pgatour.Omniture = {
+  properties: {
+    pageName: `pgatour:wgf:${pname}`,
+    eVar16:`pgatour:wgf:${pname}`,
+    prop18: 'homePage',
+    eVar1: 'pgatour',
+    prop1: 'pgatour',
+    prop2: 'r011',
+    eVar2: 'r011',
+    eVar6: window.location.href,
+  },
   defineOmnitureVars: () => {},
+
 };
 window.pgatour.docWrite = document.write.bind(document);
 
