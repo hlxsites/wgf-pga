@@ -1,9 +1,8 @@
-# Your Project's Title...
-Your project's description...
+# PGA World Golf Foundation project
 
 ## Environments
-- Preview: https://main--{repo}--{owner}.hlx.page/
-- Live: https://main--{repo}--{owner}.hlx.live/
+- Preview: https://main--wgf-pga-tour--hlxsites.hlx.page/
+- Live: https://main--wgf-pga-tour--hlxsites.hlx.live/
 
 ## Installation
 
