@@ -40,7 +40,7 @@ const pname = window.location.pathname.split('/').pop();
 window.pgatour.Omniture = {
   properties: {
     pageName: `pgatour:wgf:${pname}`,
-    eVar16:`pgatour:wgf:${pname}`,
+    eVar16: `pgatour:wgf:${pname}`,
     prop18: 'homePage',
     eVar1: 'pgatour',
     prop1: 'pgatour',
@@ -57,5 +57,4 @@ loadScript('https://cdn.cookielaw.org/scripttemplates/otSDKStub.js', () => {
   loadScript('https://assets.adobedtm.com/d17bac9530d5/90b3c70cfef1/launch-1ca88359b76c.min.js');
 }, {
   'data-domain-script': '262c6c79-a114-41f0-9c07-52cb1fb7390c',
-})
-
+});
