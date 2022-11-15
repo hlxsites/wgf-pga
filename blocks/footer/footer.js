@@ -5,6 +5,7 @@ function setupCookieChoices(section) {
     const cookieLink = section.querySelector('a[href*="onetrust-link"]');
     if (cookieLink) {
       cookieLink.removeAttribute('href');
+      cookieLink.className = 'ot-sdk-show-settings';
       cookieLink.id = 'ot-sdk-btn';
       cookieLink.parentNode.className = 'onetrust-link';
     }

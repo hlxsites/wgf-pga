@@ -44,12 +44,19 @@ footer .footer .footer-legal ul {
 }
 
 footer .footer .footer-legal a {
-  color: var(--link-color);
   text-transform: uppercase;
 }
 
-footer .footer .footer-legal a:hover {
+footer .footer .footer-legal #ot-sdk-btn.ot-sdk-show-settings {
+  height: unset;
+  padding: 0;
+  border: 0;
+  color: var(--link-color);
+  font-size: inherit;
+  line-height: inherit;
+}
+
+footer .footer .footer-legal #ot-sdk-btn.ot-sdk-show-settings:hover {
+  background-color: unset;
   color: var(--link-hover-color);
-  text-decoration: underline;
-  cursor: pointer;
 }
