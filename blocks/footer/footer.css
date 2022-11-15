@@ -50,4 +50,6 @@ footer .footer .footer-legal a {
 
 footer .footer .footer-legal a:hover {
   color: var(--link-hover-color);
+  text-decoration: underline;
+  cursor: pointer;
 }
