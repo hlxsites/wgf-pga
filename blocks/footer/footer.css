@@ -42,3 +42,12 @@ footer .footer .footer-legal ul {
   list-style: none;
   padding-left: 0;
 }
+
+footer .footer .footer-legal a {
+  color: var(--link-color);
+  text-transform: uppercase;
+}
+
+footer .footer .footer-legal a:hover {
+  color: var(--link-hover-color);
+}
