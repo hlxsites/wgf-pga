@@ -7,9 +7,19 @@ footer {
 footer .footer {
   max-width: 768px;
   margin: auto;
+  text-align: center;
+
 }
 
-footer .footer .footer-logos > div {
+footer .footer p {
+  margin: 0;
+}
+
+footer .footer li {
+  line-height: 1.2;
+}
+
+footer .footer .footer-logos {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -20,11 +30,15 @@ footer .footer .footer-logos a {
   white-space: nowrap;
 }
 
-
 footer .footer .footer-logos img {
   height: 45px;
 }
 
-footer .footer p {
-  margin: 0;
+footer .footer .footer-legal ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 32px;
+  list-style: none;
+  padding-left: 0;
 }

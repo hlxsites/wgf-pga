@@ -19,6 +19,6 @@ export default async function decorate(block) {
   block.append(footer);
   const styles = ['logos', 'legal'];
   styles.forEach((style, i) => {
-    if (block.children[i]) block.children[i].classList.add(`footer-${style}`);
+    if (footer.children[i]) footer.children[i].classList.add(`footer-${style}`);
   });
 }
