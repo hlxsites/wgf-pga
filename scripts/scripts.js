@@ -688,7 +688,6 @@ export function decorateMain(main) {
   decorateBlocks(main);
 }
 
-
 /**
  * loads everything needed to get to LCP.
  */
