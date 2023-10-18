@@ -23,7 +23,7 @@
 .columns img {
     width: 100%;
     height: auto;
-    aspect-ratio: 16/9 auto;
+    aspect-ratio: 1.85 auto;
 }
 
 @media (min-width: 600px) {
