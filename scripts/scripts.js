@@ -688,11 +688,13 @@ export function decorateMain(main) {
   decorateBlocks(main);
 }
 
+
 /**
  * loads everything needed to get to LCP.
  */
 async function loadEager(doc) {
   const { hostname } = window.location;
+  document.documentElement.lang = 'en';
   if (hostname === 'worldgolffoundation.org') window.location = `https://www.worldgolffoundation.org${window.location.pathname}`;
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
